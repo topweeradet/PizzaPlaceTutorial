@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "aee15352-1f79-46e9-9071-3bbb49296bcd": {
+      "ProjectGuid": "aee15352-1f79-46e9-9071-3bbb49296bcd",
+      "DisplayName": "PizzaPlace.WebApp.Server",
+      "ColorIndex": 0
+    },
+    "0c898cf3-cad6-4061-ab51-37febaeb9add": {
+      "ProjectGuid": "0c898cf3-cad6-4061-ab51-37febaeb9add",
+      "DisplayName": "PizzaPlace.WebApp.Client",
+      "ColorIndex": 1
+    },
+    "d1ca3a5d-8b5f-4ef4-a7eb-5301ad1c97f1": {
+      "ProjectGuid": "d1ca3a5d-8b5f-4ef4-a7eb-5301ad1c97f1",
+      "DisplayName": "PizzaPlace.Server",
+      "ColorIndex": 2
+    },
+    "1043b491-767c-42b6-bf2e-0c7700ab59e5": {
+      "ProjectGuid": "1043b491-767c-42b6-bf2e-0c7700ab59e5",
+      "DisplayName": "PizzaPlace.Client",
+      "ColorIndex": 3
+    },
+    "873c73e8-dba9-4052-b669-ebeefccb0827": {
+      "ProjectGuid": "873c73e8-dba9-4052-b669-ebeefccb0827",
+      "DisplayName": "PizzaPlace.Shared",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}

@@ -1,0 +1,61 @@
+﻿@page "/"
+
+@*Start menu*@
+
+<PizzaList Title="Our Selection of Pizzas"
+           Items="@State.Menu.Pizzas"
+           ButtonTitle="Order"
+           ButtonClass="btn btn-success pl-4 pr-4"
+           Selected="@AddToBasket">
+</PizzaList>
+
+@*End menu*@
+
+@*Start Shopping Bucket*@
+
+<ShoppingBasket Orders="@State.Basket.Orders"
+                GetPizzaFromId="@State.Menu.GetPizza"
+                Selected="@RemoveFromBasket">
+</ShoppingBasket>
+
+@*End Shopping Bucket*@
+
+@*Start Customer info*@
+
+<CustomerEntry Title="Please enter your details below"
+               Customer="@State.Basket.Customer"
+               ButtonTitle="Checkout"
+               ButtonClass="btn btn-success mx-auto w-25"
+               ValidSubmit="PlaceOrder">
+</CustomerEntry>
+
+@*End Customer info*@
+}
+@State.ToJson();
+
+@code {
+    public State State { get; } = new State();
+
+    protected override void OnInitialized()
+    {
+        State.Menu.Add(
+            new Pizza(1, "Pepperoni", 8.99M, Spiciness.Spicy)
+        );
+        State.Menu.Add(
+            new Pizza(2, "Margarita", 7.99M, Spiciness.None)
+        );
+        State.Menu.Add(
+            new Pizza(3, "Diabolo", 9.99M, Spiciness.Hot)
+        );
+    }
+
+
+    private void AddToBasket(Pizza pizza) => State.Basket.Add(pizza.Id);
+
+    private void RemoveFromBasket(int pos) => State.Basket.RemoveAt(pos);
+
+    private void PlaceOrder()
+    {
+        Console.WriteLine("Placing order");
+    }
+}
