@@ -15,5 +15,16 @@ namespace PizzaPlace.Client.Pages
         public Customer Customer { get; set; } = default!;
         [Parameter]
         public EventCallback ValidSubmit { get; set; } = default!;
+        [Parameter]
+        public EventCallback<Customer> CustomerChanged { get; set; }
+
+        private void FieldChanged(string fieldName)
+        {
+            CustomerChanged.InvokeAsync(Customer);
+            isInvalid = !inputWatcher.Validate();
+        }
+
+        private InputWatcher inputWatcher = default!;
+        bool isInvalid = true;
     }
 }
