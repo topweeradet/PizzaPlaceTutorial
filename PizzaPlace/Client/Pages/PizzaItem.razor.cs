@@ -21,9 +21,9 @@ namespace PizzaPlace.Client.Pages
             switch (spiciness)
             {
                 case Spiciness.Spicy:
-                    return $"<i class={iconString}></i>";
+                    return $"<i class=\"fa-solid fa-pepper-hot\"></i>";
                 case Spiciness.Hot:
-                    return $"<i class={iconString}></i><i class={iconString}></i>";
+                    return $"<i class=\"fa-solid fa-pepper-hot\"></i><i class=\"fa-solid fa-pepper-hot\"></i>";
                 default:
                     return "<i></i>";
             }

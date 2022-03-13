@@ -1,26 +1,38 @@
 ﻿@if (Orders is not null && Orders.Any())
 {
-    <h1 class="">Your current order</h1>
+    <ItemList Items="@Pizzas">
+        <Header>
+            <h1 class="">Your current order</h1>
+        </Header>
+        <RowTemplate Context="tuple">
+            <PizzaItem Pizza="tuple.pizza"
+                   ButtonClass="btn btn-danger"
+                   ButtonTitle="Remove"
+                   Selected="@(() => Selected.InvokeAsync(tuple.pos))" />
+        </RowTemplate>
+        <Footer>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"><hr /></div>
+                <div class="col"> </div>
+                <div class="col"> </div>
+            </div>
+            <div class="row">
+                <div class="col">Total:</div>
+                <div class="col text-center fw-bold">@($"{TotalPrice:0.00}")</div>
+                <div class="col"> </div>
+                <div class="col"> </div>
+            </div>
+        </Footer>
+    </ItemList>
 
-    @foreach (var (pizza, pos) in Pizzas)
-    {
+    @*@foreach (var (pizza, pos) in Pizzas)
+        {
         <div class="row mb-1">
-            <div class="col m-auto">@pizza.Name</div>
-            <div class="col m-auto text-center">@($"{pizza.Price:0.00}")</div>
-            <div class="col m-auto"></div>
-            <div class="col m-auto"><button class="btn btn-danger" @onclick="@(() => Selected.InvokeAsync(pos))">Remove</button></div>
+        <div class="col m-auto">@pizza.Name</div>
+        <div class="col m-auto text-center">@($"{pizza.Price:0.00}")</div>
+        <div class="col m-auto"></div>
+        <div class="col m-auto"><button class="btn btn-danger" @onclick="@(() => Selected.InvokeAsync(pos))">Remove</button></div>
         </div>
-    }
-    <div class="row">
-        <div class="col"></div>
-        <div class="col"><hr /></div>
-        <div class="col"> </div>
-        <div class="col"> </div>
-    </div>
-    <div class="row">
-        <div class="col">Total:</div>
-        <div class="col text-center fw-bold">@($"{TotalPrice:0.00}")</div>
-        <div class="col"> </div>
-        <div class="col"> </div>
-    </div>
+        }*@
 }
