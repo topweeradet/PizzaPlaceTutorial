@@ -1,4 +1,6 @@
 ﻿@page "/"
+@inject IMenuService MenuService
+@inject IOrderService OrderService
 
 @*Start menu*@
 
@@ -36,26 +38,22 @@
 @code {
     public State State { get; } = new State();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        State.Menu.Add(
-            new Pizza(1, "Pepperoni", 8.99M, Spiciness.Spicy)
-        );
-        State.Menu.Add(
-            new Pizza(2, "Margarita", 7.99M, Spiciness.None)
-        );
-        State.Menu.Add(
-            new Pizza(3, "Diabolo", 9.99M, Spiciness.Hot)
-        );
-    }
+        Menu menu = await MenuService.GetMenu();
 
+        foreach (Pizza pizza in menu.Pizzas)
+        {
+            State.Menu.Add(pizza);
+        }
+    }
 
     private void AddToBasket(Pizza pizza) => State.Basket.Add(pizza.Id);
 
     private void RemoveFromBasket(int pos) => State.Basket.RemoveAt(pos);
 
-    private void PlaceOrder()
+    private async Task PlaceOrder()
     {
-        Console.WriteLine("Placing order");
+        await OrderService.PlaceOrder(State.Basket);
     }
 }
