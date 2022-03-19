@@ -1,11 +1,14 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
+using PizzaPlace.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("PizzaPlaceDb");
+builder.Services.AddDbContext<PizzaPlaceDbContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
